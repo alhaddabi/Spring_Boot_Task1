@@ -1,24 +1,24 @@
 package com.codline.TaskBatch2.Models;
 
 
-import jdk.jfr.Enabled;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Getter
 @Setter
 @Entity
 @Data
-public class player extends BaseEntity {
+public class Player extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     Long Id ;
+
+//    @JoinColumn(name = "playerId" , referencedColumnName = "id")
+//    @OneToOne(Cascade = CascadeType.ALL)
+//    Team team;
 
     String playerName ;
 
@@ -26,5 +26,5 @@ public class player extends BaseEntity {
 
     String playerGander;
 
-    String playerFavretTeam;
+    String playerFavoriteTeam;
 }
