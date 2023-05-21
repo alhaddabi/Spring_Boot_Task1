@@ -22,7 +22,7 @@ public class Player extends BaseEntity {
 
     String playerName ;
 
-    String playerAge;
+    Integer playerAge;
 
     String playerGander;
 
