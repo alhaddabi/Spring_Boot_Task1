@@ -5,6 +5,7 @@ import com.codline.TaskBatch2.Models.Player;
 import com.codline.TaskBatch2.RequestObject.GetPlayerRequest;
 import com.codline.TaskBatch2.Service.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,7 +18,7 @@ public class PlayerController {
     PlayerService playerService;
 
 
-    @RequestMapping("player/create")
+    @PostMapping("player/api/register")
     public void savePlayer (@RequestBody GetPlayerRequest playerRequest)
     {
         createPlayer(playerRequest);

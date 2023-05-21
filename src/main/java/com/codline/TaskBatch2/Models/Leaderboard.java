@@ -8,13 +8,12 @@ import lombok.Setter;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
 @Setter
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class LeaderboardEntry extends BaseEntity {
+public class Leaderboard extends BaseEntity {
     @javax.persistence.Id
             @GeneratedValue(strategy = GenerationType.SEQUENCE)
     Long Id ;
