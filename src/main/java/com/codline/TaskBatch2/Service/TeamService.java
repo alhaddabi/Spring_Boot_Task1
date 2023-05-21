@@ -8,13 +8,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Setter
-@Getter
-@NoArgsConstructor
-@AllArgsConstructor
+@Service
 public class TeamService {
 
 

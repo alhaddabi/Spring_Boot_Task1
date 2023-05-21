@@ -19,7 +19,7 @@ public class Game extends BaseEntity {
             @GeneratedValue(strategy = GenerationType.SEQUENCE)
     Long id ;
 
-    String gameName;
+    String SportName;
 
     String gameDesignation;
 
