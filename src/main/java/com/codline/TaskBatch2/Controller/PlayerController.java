@@ -31,6 +31,9 @@ public class PlayerController {
         player.setPlayerAge(26);
         player.setUpdatedDate(new Date());
         player.setIsActive(true);
+        player.setPlayerGander("Male");
+        player.setCreatedDate(new Date());
+        player.setPlayerFavoriteTeam("A");
         playerService.savePlayer(player);
     }
 }
