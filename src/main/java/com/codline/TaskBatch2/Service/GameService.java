@@ -2,12 +2,14 @@ package com.codline.TaskBatch2.Service;
 
 
 import com.codline.TaskBatch2.Models.Game;
-import com.codline.TaskBatch2.Models.Player;
-import com.codline.TaskBatch2.Repository.GameReprository;
-import com.codline.TaskBatch2.Repository.PlayerRepository;
+import com.codline.TaskBatch2.Repository.GameRepository;
+import com.codline.TaskBatch2.RequestObject.GetGameRequest;
 import com.codline.TaskBatch2.ResponseObject.GetGameResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 import java.util.Optional;
@@ -15,24 +17,43 @@ import java.util.Optional;
 @Service
 public class GameService {
     @Autowired
-    GameReprository gameReprository;
+    GameRepository gameRepository;
 
     public List<Game> getGame() {
-        return gameReprository.findAll();
+        return gameRepository.findAll();
     }
 
     public void saveGame(Game game) {
-        gameReprository.save(game);
+        gameRepository.save(game);
     }
 
-    public GetGameResponse getSPortByName(Long sportId) {
-        Optional<Game> optionalGame = gameReprository.findById(sportId);
-        if (!optionalGame.isEmpty()) {
+
+
+    public GetGameResponse updateGame(Long GameID, GetGameRequest updateGame) {
+        Optional<Game> optionalGame = gameRepository.findById(GameID);
+        if (optionalGame.isPresent()) {
             Game game = optionalGame.get();
-            GetGameResponse gameResponse = new GetGameResponse(game.getSportName() , game.getGameDesignation());
+            game.setSport_Name(updateGame.getGameName());
+            game.setGameDesignation(updateGame.getGameDesignation());
+            gameRepository.save(game);
+            return GetGameBuId(GameID);
+  }
+        return null;
+    }
+
+    public GetGameResponse GetGameBuId(Long id) {
+        Optional<Game> optionalGame = gameRepository.findById(id);
+        if (optionalGame.isPresent()) {
+            Game game = optionalGame.get();
+            GetGameResponse gameResponse = new GetGameResponse();
+            gameResponse.setGameName(game.getSport_Name());
+            gameResponse.setGameDesignation(game.getGameDesignation());
             return gameResponse;
-        } else {
-            return null;
         }
+        return null;
+    }
+
+    public List<Game>getSporyBySportName(String Sport_Name){
+        return gameRepository.getSporyBySportName(Sport_Name);
     }
 }
